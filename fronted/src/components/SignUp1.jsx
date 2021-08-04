@@ -1,8 +1,43 @@
 import logo from '../images/logo.png';
 import { Link } from 'react-router-dom';
+import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 
-const Example = () => {
+const Example = ({handleFetch}) => {
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+    name: ""
+  });
+  let history = useHistory();
+  const handlChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
+  const handlSingUn = async (e) => {
+    e.preventDefault();
+    const settings = {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    };
+    try {
+      const fetchResponse = await fetch(
+        `http://localhost:3001/sign-up`,
+        settings
+      );
+      const data = await fetchResponse.json();
+      console.log(data);
+      handleFetch(data.user);
+      history.push("/");
+      return data;
+    } catch (e) {
+      return e;
+    }
+  };
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-4 lg:px-6">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -16,7 +51,7 @@ const Example = () => {
 
       <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <form className="space-y-6" action="#" method="POST">
+          <form className="space-y-6" action="#" method="POST" onSubmit={handlSingUn}>
           <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700 w-24">
                 Name
@@ -27,6 +62,8 @@ const Example = () => {
                   name="name"
                   type="name"
                   autoComplete="name"
+                  value={user.name}
+                  onChange={handlChange}
                   required
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
                 />
@@ -42,6 +79,8 @@ const Example = () => {
                   name="email"
                   type="email"
                   autoComplete="email"
+                  value={user.email}
+                  onChange={handlChange}
                   required
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
                 />
@@ -59,6 +98,8 @@ const Example = () => {
                   type="password"
                   autoComplete="current-password"
                   required
+                  value={user.password}
+                  onChange={handlChange}
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
                 />
               </div>

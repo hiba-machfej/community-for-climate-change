@@ -24,8 +24,8 @@ function App() {
         </Route>
         <Route path="/sign-up">
           
-          {/* <SignUp handleFetch={setUserData} /> */}
-          <SignUp  />
+          <SignUp handleFetch={setUserData} />
+  
         </Route>
       </Router>
     </div>
