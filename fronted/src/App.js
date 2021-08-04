@@ -1,7 +1,8 @@
 import { useState } from "react";
 import Nav from "./components/Nav";
 import SignIn from "./components/SignIn";
-import SignUp from "./components/SignUp";
+// import SignUp from "./components/SignUp";
+import SignUp from "./components/SignUp1"
 import Home from "./components/Home";
 import HeroSection from "./components/HeroSection"
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -22,7 +23,9 @@ function App() {
           <SignIn handleFetch={setUserData} />
         </Route>
         <Route path="/sign-up">
-          <SignUp handleFetch={setUserData} />
+          
+          {/* <SignUp handleFetch={setUserData} /> */}
+          <SignUp  />
         </Route>
       </Router>
     </div>
