@@ -17,7 +17,7 @@ const Example = () => {
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <form className="space-y-6" action="#" method="POST">
           <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 w-24">
                 Name
               </label>
               <div className="mt-1">
@@ -32,8 +32,8 @@ const Example = () => {
               </div>
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                Email <br/>address
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 w-24">
+                Email address
               </label>
               <div className="mt-1">
                 <input
@@ -48,7 +48,7 @@ const Example = () => {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700 w-24">
                 Password
               </label>
               <div className="mt-1">
