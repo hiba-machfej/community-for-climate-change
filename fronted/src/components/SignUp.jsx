@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 
-const Example = ({handleFetch}) => {
+const SignUp = ({handleFetch}) => {
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -138,4 +138,4 @@ const Example = ({handleFetch}) => {
   )
 }
 
-export default Example;
+export default SignUp;
