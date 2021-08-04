@@ -11,7 +11,7 @@ const Example = () => {
           src={logo}
           alt="Workflow"
         />
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
+        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">You are one step away from changing the world! <br/>Create an account and Sign up</h2>
       </div>
 
       <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-md">
