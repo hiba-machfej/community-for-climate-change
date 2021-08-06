@@ -1,9 +1,11 @@
 import { useState } from "react";
 import Nav from "./components/Nav";
 import SignIn from "./components/SignIn";
-import SignUp from "./components/SignUp";
+import SignUp from "./components/SignUp"
 import Home from "./components/Home";
 import Form from "./components/Form";
+import HeroSection from "./components/HeroSection"
+import Cards from "./components/Cards"
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 
@@ -15,6 +17,9 @@ function App() {
       <Router>
         <Route path="/" component={Nav} />
         <Route exact path="/">
+          <HeroSection/>
+          <Form />
+          <Cards/>
           <Home {...userData} />
         </Route>
         <Route path="/sign-in">
@@ -23,7 +28,7 @@ function App() {
         <Route path="/sign-up">
           <SignUp handleFetch={setUserData} />
         </Route>
-        <Form />
+    
       </Router>
     </div>
   );
