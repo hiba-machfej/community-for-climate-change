@@ -50,18 +50,6 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.use((req, res, next) => {
-//   if (!req.userId) {
-//     return next();
-//   }
-//   User.findOne({ where: { id: req.userId } })
-//     .then((user) => {
-//       req.user = user;
-//       next();
-//     })
-//     .catch((err) => console.log(err));
-// });
-
 app.use(hobbyRouter);
 app.use(userRouter);
 
