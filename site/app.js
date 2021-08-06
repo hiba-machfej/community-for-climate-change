@@ -30,24 +30,24 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 
 app.use(
-  session({
-    secret: "MySecret",
-    store: new SequelizeStore({
-      db: db,
-    }),
-    resave: false, // we support the touch method so per the express-session docs this should be set to false
-    proxy: true, // if you do SSL outside of node.
-  })
+    session({
+        secret: "MySecret",
+        store: new SequelizeStore({
+            db: db,
+        }),
+        resave: false, // we support the touch method so per the express-session docs this should be set to false
+        proxy: true, // if you do SSL outside of node.
+    })
 );
 
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "OPTIONS, GET, POST, PUT, PATCH, DELETE"
-  );
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  next();
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader(
+        "Access-Control-Allow-Methods",
+        "OPTIONS, GET, POST, PUT, PATCH, DELETE"
+    );
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+    next();
 });
 
 // app.use((req, res, next) => {
@@ -69,9 +69,9 @@ Hobby.belongsTo(User);
 User.hasMany(Hobby);
 
 db.sync()
-  .then(() => {
-    app.listen(port, () => {
-      console.log(`Example app listening at http://localhost:${port}`);
-    });
-  })
-  .catch((err) => console.log(err));
+    .then(() => {
+        app.listen(port, () => {
+            console.log(`Example app listening at http://localhost:${port}`);
+        });
+    })
+    .catch((err) => console.log(err));
