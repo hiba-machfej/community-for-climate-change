@@ -47,9 +47,9 @@ const Home = (userData) => {
   };
   return (
     <div>
-      {userData.firstName ? (
+      {userData.name ? (
         <div>
-          <h1>Welcome {userData.firstName}</h1>
+          <h1>Welcome {userData.name}</h1>
           {hobbies ? (
             <div>
               <h3>Your Hobbies</h3>
