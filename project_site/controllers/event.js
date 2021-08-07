@@ -1,5 +1,3 @@
-const User = require("../models/user");
-
 const Event = require("../models/event");
 
 exports.postAddEvent = (req, res, next) => {
@@ -13,7 +11,7 @@ exports.postAddEvent = (req, res, next) => {
 };
 
 
-exports.getEvent = (req, res, next) => {
+exports.getMyEvents = (req, res, next) => {
 
     req.user
         .getEvents()
@@ -21,3 +19,16 @@ exports.getEvent = (req, res, next) => {
         .catch((err) => console.log(err));
 
 }
+
+exports.getAllEvents = async(req, res, next) => {
+    const events = await Event.findAll();
+    res.send(events);
+}
+
+// exports.deleteEvent = (req, res, next) => {
+//     Model.destroy({
+//         where: {
+//             req.event.d
+//         }
+//     })
+// }

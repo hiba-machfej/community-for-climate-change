@@ -5,6 +5,10 @@ const eventController = require("../controllers/event");
 
 router.post("/add-event", eventController.postAddEvent);
 
-router.get("/get-event", eventController.getEvent)
+router.get("/get-my-events", eventController.getMyEvents)
+
+router.get('/get-all-events', eventController.getAllEvents);
+
+router.delete('/delete-event')
 
 module.exports = router;
