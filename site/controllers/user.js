@@ -35,10 +35,13 @@ exports.postSignIn = async (req, res, next) => {
     "somesupersecretsecret",
     { expiresIn: "1h" }
   );
-  res.status(200).json({
-    token: token,
-    userId: req.user.id,
-    name: req.user.name,
-    email: req.user.email,
-  });
+  res
+    .status(200)
+    .json({
+      token: token,
+      userId: req.user.id,
+      name: req.user.name,
+      email: req.user.email,
+    })
+    .then((req.session.cookie.maxAge = 30 * 24 * 60 * 60 * 1000)); // Cookie expires after 30 days)
 };

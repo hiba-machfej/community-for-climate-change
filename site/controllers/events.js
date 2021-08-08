@@ -1,5 +1,6 @@
 const User = require("../models/user");
 const Event = require("../models/event");
+
 exports.postAddEvent = (req, res, next) => {
   const title = req.body.title;
   const description = req.body.description;
@@ -22,4 +23,18 @@ exports.getEvents = async (req, res, next) => {
   const events = await Event.findAll();
   console.log(req.events);
   res.send(events).catch((err) => console.log(err));
+};
+
+exports.deleteEvent = (req, res, next) => {
+  console.log("working");
+  // console.log(req.body.id);
+  Event.destroy({
+    where: { id: req.body.id },
+  })
+    .then(() => {
+      res.send("Event deleted");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
