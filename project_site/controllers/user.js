@@ -22,17 +22,5 @@ exports.postSignUp = async(req, res, next) => {
 
 exports.postSignIn = async(req, res, next) => {
     req.session.user = req.user;
-    const token = jwt.sign({
-            email: req.user.email,
-            userId: req.user.id.toString(),
-        },
-        "somesupersecretsecret", { expiresIn: "1h" }
-    );
-    res.status(200).json({
-        token: token,
-        userId: req.user.id,
-        name: req.user.name,
-
-    });
-
-}
+    res.send(req.user);
+};

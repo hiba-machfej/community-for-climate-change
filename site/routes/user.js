@@ -1,5 +1,5 @@
 const express = require("express");
-const passport = require('passport')
+const passport = require("passport");
 const router = express.Router();
 
 const usersControllers = require("../controllers/user");
@@ -9,14 +9,11 @@ router.get("/", usersControllers.getUsers);
 router.post("/sign-up", usersControllers.postSignUp);
 
 router.post(
-
     "/sign-in",
     passport.authenticate("local", {
         session: false,
         failureRedirect: "/sign-up",
-
     }),
-
     usersControllers.postSignIn
 );
 
