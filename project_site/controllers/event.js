@@ -25,10 +25,11 @@ exports.getAllEvents = async(req, res, next) => {
     res.send(events);
 }
 
-// exports.deleteEvent = (req, res, next) => {
-//     Model.destroy({
-//         where: {
-//             req.event.d
-//         }
-//     })
-// }
+exports.deleteEvent = (req, res, next) => {
+
+    console.log(req.body.id);
+    Event.destroy({
+        where: { id: req.body.id },
+    });
+    res.send('Event deleted');
+}

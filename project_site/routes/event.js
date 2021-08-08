@@ -9,6 +9,6 @@ router.get("/get-my-events", eventController.getMyEvents)
 
 router.get('/get-all-events', eventController.getAllEvents);
 
-router.delete('/delete-event')
+router.delete('/delete-event', eventController.deleteEvent);
 
 module.exports = router;
