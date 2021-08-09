@@ -10,14 +10,19 @@ import "./App.css";
 
 function App() {
   const [userData, setUserData] = useState({});
+  const [isChanged, setIsChanged] = useState(false);
   return (
     <div className="App">
       <Router>
         <Route path="/" component={Nav} />
         <Route exact path="/">
           <HeroSection />
-          <Cards />
-          <Home {...userData} />
+          <Cards isChanged={isChanged} />
+          <Home
+            userData={userData}
+            isChanged={isChanged}
+            handleChange={setIsChanged}
+          />
         </Route>
         <Route path="/sign-in">
           <SignIn handleFetch={setUserData} />

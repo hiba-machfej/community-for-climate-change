@@ -1,15 +1,14 @@
 import { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
-const Home = (userData, handleFetch) => {
+const Home = ({ userData, handleChange, isChanged }) => {
   const [id, setId] = useState({});
   const [event, setEvent] = useState({
     title: "",
     imgUrl: "",
     description: "",
   });
-  const [events, setEvents] = useState(null);
-  const [fetching, setFetching] = useState(0);
-  console.log(fetching);
+  const [events, setEvents] = useState([]);
+
+  console.log(isChanged);
   const handlChange = (e) => {
     setEvent({ ...event, [e.target.name]: e.target.value });
   };
@@ -25,7 +24,7 @@ const Home = (userData, handleFetch) => {
       setEvents(events);
     };
     fetchEvents();
-  }, [fetching]);
+  }, [isChanged]);
 
   const handlDelete = async (e) => {
     const settings = {
@@ -42,8 +41,8 @@ const Home = (userData, handleFetch) => {
         `http://localhost:3001/delete-event`,
         settings
       );
-      const data = await fetchResponse.json();
-      return data;
+      const data = fetchResponse.json();
+      handleChange(!isChanged);
     } catch (e) {
       return e;
     }
@@ -60,14 +59,15 @@ const Home = (userData, handleFetch) => {
       },
       body: JSON.stringify(event),
     };
+    // console.log(events);
+    console.log(isChanged);
     try {
       const fetchResponse = await fetch(
         `http://localhost:3001/add-event`,
         settings
       );
-      const data = await fetchResponse.json();
-      console.log(data);
-      return data;
+      const data = fetchResponse.json();
+      handleChange(!isChanged);
     } catch (e) {
       return e;
     }
