@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 const Home = ({ userData, handleChange, isChanged }) => {
+  console.log(userData);
   const [id, setId] = useState({});
   const [event, setEvent] = useState({
     title: "",
@@ -59,8 +60,7 @@ const Home = ({ userData, handleChange, isChanged }) => {
       },
       body: JSON.stringify(event),
     };
-    // console.log(events);
-    console.log(isChanged);
+
     try {
       const fetchResponse = await fetch(
         `http://localhost:3001/add-event`,
@@ -83,7 +83,9 @@ const Home = ({ userData, handleChange, isChanged }) => {
               <ul className="flex flex-col">
                 {events.map((event, i) => (
                   <div className="flex justify-between my-2 items-center">
-                    <li key={`${i}`} className="text-green-600 text-md ml-5">
+                    <li
+                      key={`${event.id}`}
+                      className="text-green-600 text-md ml-5">
                       {event.title}
                     </li>
 

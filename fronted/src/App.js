@@ -18,11 +18,13 @@ function App() {
         <Route exact path="/">
           <HeroSection />
           <Cards isChanged={isChanged} />
-          <Home
-            userData={userData}
-            isChanged={isChanged}
-            handleChange={setIsChanged}
-          />
+          {userData && (
+            <Home
+              userData={userData}
+              isChanged={isChanged}
+              handleChange={setIsChanged}
+            />
+          )}
         </Route>
         <Route path="/sign-in">
           <SignIn handleFetch={setUserData} />
