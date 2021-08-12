@@ -3,12 +3,10 @@ import { useState, useEffect } from "react";
 
 const Cards = ({ isChanged }) => {
   const [events, setEvents] = useState([]);
-  console.log(isChanged);
   useEffect(() => {
     const fetchEvents = async () => {
       const data = await fetch("http://localhost:3001/get-events");
       const events = await data.json();
-      console.log(events);
 
       setEvents(events);
     };

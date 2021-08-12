@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 const Home = ({ userData, handleChange, isChanged }) => {
-  console.log(userData);
   const [id, setId] = useState({});
   const [event, setEvent] = useState({
     title: "",
@@ -9,7 +8,6 @@ const Home = ({ userData, handleChange, isChanged }) => {
   });
   const [events, setEvents] = useState([]);
 
-  console.log(isChanged);
   const handlChange = (e) => {
     setEvent({ ...event, [e.target.name]: e.target.value });
   };
@@ -72,8 +70,9 @@ const Home = ({ userData, handleChange, isChanged }) => {
       return e;
     }
   };
+
   return (
-    <div>
+    <div className="mx-52">
       {userData.name ? (
         <div>
           <h1 className="text-green-800 text-2xl ">Welcome {userData.name}</h1>
@@ -81,7 +80,7 @@ const Home = ({ userData, handleChange, isChanged }) => {
             <div>
               <h3 className="text-green-700 text-xl my-3">Your Events</h3>
               <ul className="flex flex-col">
-                {events.map((event, i) => (
+                {events.map((event) => (
                   <div className="flex justify-between my-2 items-center">
                     <li
                       key={`${event.id}`}
@@ -179,6 +178,7 @@ const Home = ({ userData, handleChange, isChanged }) => {
                   type="date"
                   name="date"
                   value={event.date}
+                  pattern="\d{4}-\d{2}-\d{2}"
                   onChange={handlChange}
                 />
               </div>
